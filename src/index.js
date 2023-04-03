@@ -1,13 +1,56 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import AllProducts from "./pages/AllProducts";
+import Home from "./pages/Home";
+import MyCart from "./pages/MyCart";
+import ProductDetail from "./pages/ProductDetail";
+import NotFound from "./pages/NotFound";
+import NewProduct from "./pages/NewProduct";
+import ProtectedRoute from "./pages/ProtectedRoute";
+import Pathogen from "./components/productComponent/Pathogen";
+import LifeProducts from "./components/productComponent/LifeProducts";
+import Electronics from "./components/productComponent/Electronics";
+import Architecture from "./components/productComponent/Architecture";
+const root = ReactDOM.createRoot(document.getElementById("root"));
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <NotFound />,
+    children: [
+      { index: true, element: <Home /> },
+      {
+        path: "/carts",
+        element: (
+          <ProtectedRoute>
+            <MyCart />
+          </ProtectedRoute>
+        ),
+      },
+      { path: "/products", element: <AllProducts /> },
+      { path: "/products/life", element: <LifeProducts /> },
+      { path: "/products/electronics", element: <Electronics /> },
+      { path: "/products/architecture", element: <Architecture /> },
+      { path: "/products/pathogen", element: <Pathogen /> },
+      {
+        path: "/products/new",
+        element: (
+          <ProtectedRoute requireAdmin>
+            <NewProduct />
+          </ProtectedRoute>
+        ),
+      },
+      { path: "/products/:productId", element: <ProductDetail /> },
+    ],
+  },
+]);
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
