@@ -31,8 +31,22 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
-      { path: "/products", element: <AllProducts /> },
-      { path: "/products/life", element: <LifeProducts /> },
+      {
+        path: "/products",
+        element: (
+          <ProtectedRoute>
+            <AllProducts />{" "}
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/products/life",
+        element: (
+          <ProtectedRoute>
+            <LifeProducts />
+          </ProtectedRoute>
+        ),
+      },
       { path: "/products/electronics", element: <Electronics /> },
       { path: "/products/architecture", element: <Architecture /> },
       { path: "/products/pathogen", element: <Pathogen /> },

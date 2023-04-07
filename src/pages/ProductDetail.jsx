@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import Button from "../components/ui/Button";
+import { useAuthContext } from "../context/AuthContext";
 import useCart from "../hooks/useCart";
 
 export default function ProductDetail() {
+  const { user } = useAuthContext();
   const { addOrUpdateItem } = useCart();
   const {
     state: {
@@ -12,9 +14,14 @@ export default function ProductDetail() {
     },
   } = useLocation();
   const [success, setSuccess] = useState();
+
   const [selected, setSelected] = useState(options && options[0]);
   const handleSelect = (e) => setSelected(e.target.value);
   const handleClick = () => {
+    if (!user) {
+      setSuccess("로그인 후 사용할 수 있습니다!");
+      return;
+    }
     const product = {
       id,
       image,
@@ -58,6 +65,7 @@ export default function ProductDetail() {
             >
               ⬅️
             </button>
+
             <Button text="휴지통에 넣기♻️" onClick={handleClick} />
           </div>
         </div>
