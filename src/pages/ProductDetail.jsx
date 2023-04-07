@@ -10,13 +10,11 @@ export default function ProductDetail() {
   const { addOrUpdateItem } = useCart();
   const {
     state: {
-      product: { id, image, title, content, category, price, options },
+      product: { id, image, title, content, category, price },
     },
   } = useLocation();
   const [success, setSuccess] = useState();
 
-  const [selected, setSelected] = useState(options && options[0]);
-  const handleSelect = (e) => setSelected(e.target.value);
   const handleClick = () => {
     if (!user) {
       setSuccess("로그인 후 사용할 수 있습니다!");
