@@ -15,6 +15,8 @@ import Pathogen from "./components/productComponent/Pathogen";
 import LifeProducts from "./components/productComponent/LifeProducts";
 import Electronics from "./components/productComponent/Electronics";
 import Architecture from "./components/productComponent/Architecture";
+import Diary from "./pages/Diary";
+import DiaryDetail from "./pages/DiaryDetail";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
   {
@@ -59,6 +61,8 @@ const router = createBrowserRouter([
         ),
       },
       { path: "/products/:productId", element: <ProductDetail /> },
+      { path: "/diary/", element: <Diary /> },
+      { path: "/diary/:diaryId", element: <DiaryDetail /> },
     ],
   },
 ]);
