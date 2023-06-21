@@ -24,8 +24,7 @@ body {
   @apply flex flex-col items-center;
 }
 
-select,
-input {
+select {
   @apply p-4 outline-none border border-gray-300 my-1;
 }
 textarea {

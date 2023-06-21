@@ -19,7 +19,8 @@ export default function Navbar() {
         <h1 className="text-xl">그린북</h1>
       </Link>
       <nav className="flex items-center gap-4">
-        <Link to="/">메인</Link>
+        <Link to="/">HOME</Link>
+        <Link to="/">Q&A</Link>
         <Link to="/products">분리수거</Link>
         {user && (
           <Link to="/carts">
