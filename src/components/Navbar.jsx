@@ -20,7 +20,7 @@ export default function Navbar() {
       </Link>
       <nav className="flex items-center gap-4">
         <Link to="/">HOME</Link>
-        <Link to="/">Q&A</Link>
+        {/* <Link to="/">Q&A</Link> */}
         <Link to="/products">분리수거</Link>
         {user && (
           <Link to="/carts">

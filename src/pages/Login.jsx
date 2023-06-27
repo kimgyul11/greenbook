@@ -4,7 +4,7 @@ export default function Login() {
   return (
     <div className={styles.login_wrap}>
       <div className={styles.title_wrap}>
-        그린북에 오신걸 환영합니다
+        그린북에 오신걸 환영합니다👋
         <br />
         아이디와 비밀번호를
         <br />
